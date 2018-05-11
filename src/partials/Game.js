@@ -13,7 +13,12 @@ export default class Game {
 		this.gameElement = document.getElementById(this.element);
 
 		this.board = new Board(this.width, this.height);
-		this.ball = new Ball(8, this.width, this.height);
+
+
+		this.ball1 = new Ball(8, this.width, this.height);
+		this.ball2 = new Ball(8, this.width, this.height);
+
+
 		this.score1 = new Score(this.width / 2 - 50, 30, 30);
 		this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
@@ -61,9 +66,12 @@ export default class Game {
 			svg.setAttributeNS(null, 'viewBox', `0 0 ${this.width} ${this.height}`);
 			this.gameElement.appendChild(svg);
 			this.board.render(svg);
+			// players
 			this.player1.render(svg);
 			this.player2.render(svg);
-			this.ball.render(svg, this.player1, this.player2);
+			// balls
+			this.ball1.render(svg, this.player1, this.player2);
+			this.ball2.render(svg, this.player1, this.player2);
 			// the score
 			this.score1.render(svg, this.player1.score);
 			this.score2.render(svg, this.player2.score);
