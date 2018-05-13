@@ -1,3 +1,4 @@
+import Winning from './Winning';
 import Score from './Score';
 import Ball from './Ball';
 import Paddle from './Paddle';
@@ -21,6 +22,7 @@ export default class Game {
 
 		this.score1 = new Score(this.width / 2 - 50, 30, 30);
 		this.score2 = new Score(this.width / 2 + 25, 30, 30);
+		this.winning = new Winning(this.width/2 - 90, 150, 40);
 
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
@@ -28,7 +30,7 @@ export default class Game {
 		
 		this.pause = false;
 
-		
+		 
 
 		document.addEventListener('keydown', event => {
 			if (event.key == KEYS.spaceBar) {
@@ -38,21 +40,29 @@ export default class Game {
 
 		this.player1 = new Paddle(
 			this.height,
+			this.width,
 			this.paddleWidth,
 			this.paddleHeight,
 			this.boardGap,
 			((this.height - this.paddleHeight) / 2),
+			KEYS.w,
+			KEYS.s,
+			KEYS.d,
 			KEYS.a,
-			KEYS.z
+			'player1'
 		);
 		this.player2 = new Paddle(
 			this.height,
+			this.width,
 			this.paddleWidth,
 			this.paddleHeight,
 			(this.width - this.boardGap - this.paddleWidth),
 			((this.height - this.paddleHeight) / 2),
 			KEYS.up,
-			KEYS.down
+			KEYS.down,
+			KEYS.right,
+			KEYS.left,
+			'player2'
 		);
 	}
 	render() {
@@ -75,5 +85,9 @@ export default class Game {
 			// the score
 			this.score1.render(svg, this.player1.score);
 			this.score2.render(svg, this.player2.score);
+			if(this.player1.score === 10 || this.player2.score === 10) {
+				this.winning.render(svg);
+				this.pause = true; 
 		}
 	}
+}
