@@ -13,7 +13,7 @@ export default class Winning {
             text.setAttributeNS(null, 'y', this.y);
             text.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
             text.setAttributeNS(null, 'font-size', this.size);
-            text.setAttributeNS(null, 'fill', 'pink');
+            text.setAttributeNS(null, 'fill', '#ffffff');
             text.textContent = 'You Win!';
             svg.appendChild(text);
     }

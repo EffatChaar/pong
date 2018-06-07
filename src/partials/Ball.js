@@ -80,7 +80,7 @@ export default class Ball {
           circle.setAttributeNS(null, 'r', this.radius);
           circle.setAttributeNS(null, 'cx', this.x);
           circle.setAttributeNS(null, 'cy', this.y);
-          circle.setAttributeNS(null, 'fill', '#ffffff');
+          circle.setAttributeNS(null, 'fill', 'pink');
           svg.appendChild(circle);
       const rightGoal = this.x + this.radius >= this.boardWidth;
       const leftGoal = this.x - this.radius <= 0;
